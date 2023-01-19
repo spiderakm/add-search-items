@@ -46,19 +46,29 @@
 
 // item.style.color = "red";
 
-// var lastItem = document.querySelector('.list-group-item:last-child');
+// var lastItem = document.querySelector('.list-group-item:nth-child(even)');
 // lastItem.style.color = "blue";
 
 // Query selector all
 
-var titles = document.querySelectorAll('.title')
+// var titles = document.querySelectorAll('.title')
 
-titles[0].style.color = "red";
-titles[1].style.color = "blue";
+// titles[0].style.color = "red";
+// titles[1].style.color = "blue";
+
+
+
 
 var odd = document.querySelectorAll('li:nth-child(odd)');
 var even = document.querySelectorAll('li:nth-child(even)');
 for(var i=0; i<odd.length; i++) {
-    odd[i].style.backgroundColor="red"
+    odd[i].style.backgroundColor="green"
     even[i].style.backgroundColor="blue"
 }
+
+
+// //task 6
+// var lastItem = document.querySelector('.list-group-item:nth-child(even)');
+// lastItem.style.backgroundColor = "green";
+
+

@@ -22,11 +22,14 @@
 
 
 
-var item = document.getElementsByClassName('list-group-item')
+// var item = document.getElementsByClassName('list-group-item')
 // item[1].textContent="hello";
 // item[1].style.fontWeight = "bold";
-item[2].style.backgroundColor="green"
+// item[2].style.backgroundColor="green"
 
-for(var i = 0; i < item.length; i++){
-    item[i].style.fontWeight="bold"
-}
+// for(var i = 0; i < item.length; i++){
+//     item[i].style.fontWeight="bold"
+// }
+
+// var tagitem = document.getElementsByTagName("li")
+// tagitem[0].innerText="hello"

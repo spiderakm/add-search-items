@@ -136,21 +136,77 @@
 //task 2
 
 // //create a div
-var creatediv = document.createElement('li')
-var creatext = document.createTextNode('hello')
+// var creatediv = document.createElement('li')
+// var creatext = document.createTextNode('hello')
 
-creatediv.appendChild(creatext)
-// console.log(creatediv)
-
-
-// //insert
-parentNode = document.getElementById('items')
-// titleClass = document.querySelector('h2')
-var h2 = document.querySelector('li')
-
-// titleClass.insertBefore(creatediv,h2)
-
-// console.log(h2)
+// creatediv.appendChild(creatext)
+// // console.log(creatediv)
 
 
-parentNode.insertBefore(creatediv,h2)
+// // //insert
+// parentNode = document.getElementById('items')
+// // titleClass = document.querySelector('h2')
+// var h2 = document.querySelector('li')
+
+// // titleClass.insertBefore(creatediv,h2)
+
+// // console.log(h2)
+
+
+// parentNode.insertBefore(creatediv,h2)
+
+
+//Final project
+
+var form = document.getElementById('addForm')
+var itemlist = document.getElementById('items')
+//eventlistner for add item
+form.addEventListener('submit',addItem);
+
+// eventlistner for delete items
+itemlist.addEventListener('click',deleteItem)
+
+
+//function for add items
+function addItem(e){
+    e.preventDefault();
+
+    //get input value
+    var inputValue = document.getElementById('item').value;
+
+    //create new element
+    var li = document.createElement('li');
+    li.className = "list-group-item";
+    
+
+    //add text node with input value
+
+    li.appendChild(document.createTextNode(inputValue))
+    // delete button element
+
+    var deletebtn = document.createElement('button')
+    deletebtn.className = 'btn btn-danger btn-sm float-right delete'
+    
+    //create text node
+    deletebtn.appendChild(document.createTextNode('X'));
+    
+    li.appendChild(deletebtn)
+    
+
+
+
+    itemlist.appendChild(li)
+}
+
+//function remove items
+
+function deleteItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('are you sure')){
+            var li = e. target.parentElement;
+            itemlist.removeChild(li)
+        }
+    }
+}
+
+//if(e.target.classList.contains('delete')){

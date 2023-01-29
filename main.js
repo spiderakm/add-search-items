@@ -160,20 +160,24 @@
 
 var form = document.getElementById('addForm')
 var itemlist = document.getElementById('items')
+var filter = document.getElementById('filter');
 //eventlistner for add item
 form.addEventListener('submit',addItem);
+
 
 // eventlistner for delete items
 itemlist.addEventListener('click',deleteItem)
 
+filter.addEventListener('keyup',filteritems);
 
 //function for add items
 function addItem(e){
     e.preventDefault();
-
+    
     //get input value
     var inputValue = document.getElementById('item').value;
-
+    //2nd submit section
+    var inputValue2 = document.getElementById('description').value;
     //create new element
     var li = document.createElement('li');
     li.className = "list-group-item";
@@ -181,15 +185,20 @@ function addItem(e){
 
     //add text node with input value
 
-    li.appendChild(document.createTextNode(inputValue))
+    li.appendChild(document.createTextNode(inputValue));
+    li.appendChild(document.createTextNode(inputValue2));
+
     // delete button element
 
     var deletebtn = document.createElement('button')
     deletebtn.className = 'btn btn-danger btn-sm float-right delete'
-    
+    var editbtn = document.createElement('button')
+    editbtn.className = "btn btn-dark  btn-sm float-right Edit"
+
     //create text node
-    deletebtn.appendChild(document.createTextNode('X'));
-    
+    deletebtn.appendChild(document.createTextNode(' X '));
+    editbtn.appendChild(document.createTextNode(' Edit '));
+    li.appendChild(editbtn)
     li.appendChild(deletebtn)
     
 
@@ -197,6 +206,14 @@ function addItem(e){
 
     itemlist.appendChild(li)
 }
+
+
+
+
+
+
+
+
 
 //function remove items
 
@@ -209,4 +226,28 @@ function deleteItem(e){
     }
 }
 
-//if(e.target.classList.contains('delete')){
+
+
+//function filter items
+
+
+function filteritems(e){
+    //conver all filter text in lower case
+    var text = e.target.value.toLowerCase();
+    //get  list tag for search
+    
+    var items = itemlist.getElementsByTagName('li');
+
+    //conver liItems into array
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        var itemName1 = item.childNodes[1].textContent;
+       // console.log(itemName);
+       if(itemName.toLowerCase().indexOf(text)!=-1  ||  itemName1.toLowerCase().indexOf(text)!=-1){
+           item.style.display='block';
+       }
+       else{
+           item.style.display='none';
+       }
+       })
+    }
